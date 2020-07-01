@@ -63,6 +63,7 @@ class App extends React.Component {
         <span>
           <a href="/signup">SignUp</a>
           <a href="/login">Login</a>
+          <a href="/logout">Logout</a>
         </span>
         
         <form onSubmit={this.handleSubmit}>
