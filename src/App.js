@@ -59,6 +59,12 @@ class App extends React.Component {
     return (
       <div>
         <h1>ToDo List</h1>
+
+        <span>
+          <a href="/signup">SignUp</a>
+          <a href="/login">Login</a>
+        </span>
+        
         <form onSubmit={this.handleSubmit}>
           <input type="text" placeholder="Add New ToDo" value={this.state.text} onChange={this.handleChange}/>
           <button>Add</button>
