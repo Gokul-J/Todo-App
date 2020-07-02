@@ -8,7 +8,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       text: "",
-      list: [],
+      list: []
     }
 
     this.handleChange = this.handleChange.bind(this);
