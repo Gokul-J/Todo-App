@@ -4,7 +4,7 @@ const express = require("express"),
     Passport = require("passport");
 
 Router.post("/signup", (req,res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const newUser = new User({username: req.body.username});
     User.register(newUser, req.body.password, (err,user) => {
         if(err){
@@ -13,18 +13,22 @@ Router.post("/signup", (req,res) => {
         }
         else{
             Passport.authenticate("local")(req,res,() => {
-                res.send("success");
+                res.send(req.body.username);
             })
         }
     })
 })
 
 Router.post("/login",(req,res) => {
-    console.log(req.user);
+    // console.log(req.user);
     Passport.authenticate("local")(req,res,() => {
         console.log("Logged In as", req.body.username);
-        console.log(req.user);
-        res.send("success");
+        res.send(req.body.username);
 })});
+
+Router.post("/logout", (req,res) => {
+    // req.logout();
+    res.send("success");
+})
 
 module.exports = Router;
