@@ -13,7 +13,7 @@ Router.post("/signup", (req,res) => {
         }
         else{
             Passport.authenticate("local")(req,res,() => {
-                res.send(req.body.username);
+                res.send({username: req.body.username});
             })
         }
     })
