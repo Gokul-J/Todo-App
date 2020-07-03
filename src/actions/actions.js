@@ -39,8 +39,9 @@ const postDataSuccess = (response) => {
 }
  
 export const postData = (url, obj, props) => {
+    console.log(props);
     return (dispatch) => {
-        axios.post(url, obj)
+        axios.post("http://localhost:5000/", {text:"Brush"})
         .then(response => {
             dispatch(postDataSuccess(response));
         })

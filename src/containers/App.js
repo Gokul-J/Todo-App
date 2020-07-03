@@ -5,6 +5,10 @@ import * as actions from '../actions/actions';
 
 class App extends React.Component {
 
+  // handleSubmit(props){
+  //   this.props.postRequest("http://localhost:5000", this.props.inputfield)
+  // }
+
   componentDidMount(){
     this.props.getRequest("http://localhost:5000/");
   }
