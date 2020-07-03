@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import './App.css';
+import './User.css';
 import * as todoactions from '../actions/todoActions';
 import * as useractions from '../actions/userActions';
 
-class App extends React.Component {
+class User extends React.Component {
 
   constructor(props){
     super(props);
@@ -22,13 +22,13 @@ class App extends React.Component {
   }
 
   handleSubmit(event){
-    this.props.postRequest("http://localhost:5000/", {text:this.state.inputfield})
+    this.props.postRequest("http://localhost:5000/", {text:this.state.inputfield, username: this.props.username})
     this.setState({inputfield: ""})
     event.preventDefault();
   }
 
   handleDelete(id, event){
-    this.props.deleteRequest("http://localhost:5000/", {data : {id:id}})
+    this.props.deleteRequest("http://localhost:5000/", {data : {id:id}, username: this.props.username})
     event.preventDefault();
   }
 
@@ -40,7 +40,7 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    this.props.getRequest("http://localhost:5000/");
+    this.props.getRequest("http://localhost:5000/", this.props.username);
   }
 
   render(){
@@ -100,18 +100,19 @@ const mapStateToProps = (state) => {
     list: state.todo.data,
     success: state.todo.showSuccessModal,
     isLogged: state.user.islogged,
-    username: state.user.username
+    username: state.user.username,
+    id: state.user.id
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
 
   return{
-    getRequest: (url) => dispatch(todoactions.getData(url)),
+    getRequest: (url, body) => dispatch(todoactions.getData(url, body)),
     postRequest: (url, body) => dispatch(todoactions.postData(url,body)),
     deleteRequest: (url, body) => dispatch(todoactions.deleteData(url, body)),
     userOut: (url) => dispatch(useractions.userOut(url))
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(User);

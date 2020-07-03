@@ -23,7 +23,18 @@ Router.post("/login",(req,res) => {
     // console.log(req.user);
     Passport.authenticate("local")(req,res,() => {
         console.log("Logged In as", req.body.username);
-        res.send(req.body.username);
+        User.findOne({username: req.body.username}, (err, foundUser) => {
+            if(err){
+                console.log(err);
+            }
+            else{
+                data ={
+                    username: req.body.username,
+                    id: foundUser._id
+                }
+                res.send(data);
+            }
+        })
 })});
 
 Router.post("/logout", (req,res) => {

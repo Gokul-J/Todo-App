@@ -10,7 +10,7 @@ export const userIn = (url, obj, history) => {
                 type: actionTypes.SET_LOGIN,
                 data: response.data
             })
-            history.push("/");
+            history.push("/user");
         })
     }
 }
@@ -22,6 +22,10 @@ export const userOut = (url) => {
             dispatch({
                 type: actionTypes.RESET_LOGIN,
                 data: ""
+            })
+            dispatch({
+                type: actionTypes.GET_DATA_SUCCESS,
+                data: []
             })
         })
     }

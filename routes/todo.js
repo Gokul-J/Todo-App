@@ -1,9 +1,11 @@
 const express = require("express"),
     Router = express.Router(),
-    Todo = require("../models/todo")
+    Todo = require("../models/todo"),
+    User = require("../models/user")
 
-Router.get("/", (req, res) => {
-    Todo.find({}, (err, todo) => {
+Router.get("/:username", (req, res) => {
+    Todo.find({username: req.params.username}, (err, todo) => {
+        // console.log(req.params);
         if (err) {
             console.log(err);
         }
@@ -25,17 +27,29 @@ Router.get("/:id", (req, res) => {
 })
 
 Router.post("/", (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const text = req.body.text;
+    const username = req.body.username;
     Todo.create({
-        text: text
-    }, (err, Todo) => {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            res.json(Todo);
-        }
+        text: text,
+        username: username
+    }, (err, todo) => {
+        User.findOne({username: username}, (err, foundUser) => {
+            if(err){
+                console.log(err);
+            }
+            else{
+                foundUser.todos.push(todo);
+                foundUser.save((err, todo) => {
+                    if(err){
+                        console.log(err);
+                    }
+                    else{
+                        res.send(todo);
+                    }
+                })
+            }
+        })
     })
 })
 
@@ -46,9 +60,9 @@ Router.delete("/", (req, res) => {
             console.log(err);
         }
         else {
-            console.log("Deleted");
+            // console.log("Deleted");
             res.json(todo);
-            console.log(todo);
+            // console.log(todo);
         }
     })
 })

@@ -3,10 +3,11 @@ import axios from 'axios';
 
 //ROUTE REQUESTS
 
-export const getData = (url, props) => {
+export const getData = (url, obj, props) => {
     
     return (dispatch) => {
-        axios.get(url)
+        console.log(obj);
+        axios.get("http://localhost:5000/" + obj)
         .then(response => {
             dispatch({
                 type: actionTypes.GET_DATA_SUCCESS,
@@ -21,7 +22,7 @@ export const postData = (url, obj, history) => {
     return (dispatch) => {
         axios.post(url, obj)
         .then(response => {
-            dispatch(getData(url));
+            dispatch(getData(url, obj.username));
         })
     }
 }
@@ -41,7 +42,7 @@ export const deleteData = (url, obj, props) => {
     return (dispatch) => {
         axios.delete(url, obj)
         .then(response => {
-            dispatch(getData(url));
+            dispatch(getData(url, obj.username));
         })
     }
 }
