@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import './User.css';
 import * as todoactions from '../actions/todoActions';
 import * as useractions from '../actions/userActions';
 
@@ -80,7 +79,7 @@ class User extends React.Component {
           {list.map(todo => {
             return (
               <li key={todo._id} >
-                <input type="checkbox" />{todo.text}
+                <input type="checkbox" /><span className="checkbox">{todo.text}</span>
                 {/* <button onClick={this.handleEdit.bind(this, todo._id)}>
                         Edit
                       </button> */}
