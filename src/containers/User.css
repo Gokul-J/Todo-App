@@ -1,0 +1,16 @@
+html{
+    width: 100%;
+    height: 200px;
+}
+
+#Main{
+    background-color: red;
+}
+
+li{
+    list-style: none;
+}
+
+input[type="checkbox"]:checked + .checkbox {
+    text-decoration: line-through;
+}

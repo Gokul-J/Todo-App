@@ -1,5 +1,6 @@
 import React from 'react';
-import axios from 'axios';
+import {connect} from 'react-redux';
+import * as actions from '../actions/userActions';
 
 class Signup extends React.Component {
 
@@ -20,15 +21,7 @@ class Signup extends React.Component {
 
   handleSubmit(event){
     const {username, password} = this.state;
-    console.log(username +" "+ password );
-    axios.post("http://localhost:5000/signup", {username, password})
-      .then(res => {
-        this.setState({
-          username : "",
-          password : ""
-        })
-        console.log(res);
-      })
+    this.props.userReq("http://localhost:5000/signup", {username, password}, this.props.history);
     event.preventDefault();
   }
 
@@ -47,4 +40,17 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+const mapStateToProps = (state) => {
+  return{
+    username: state.user.username,
+    islogged: state.user.islogged
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+    userReq : (url, body, history) => dispatch(actions.userIn(url, body, history))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

@@ -1,21 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import './index.css';
-import App from './App';
+import Main from './containers/Main'
+import User from './containers/User';
 import Signup from './containers/Signup';
 import Login from './containers/Login';
+// import store from './redux';
 import * as serviceWorker from './serviceWorker';
+
+import todoReducer from './reducers/todoReducer';
+import userReducer from './reducers/userReducer';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+
+const rootReducer = combineReducers({todo: todoReducer, user: userReducer})
+const store = createStore(rootReducer, applyMiddleware(logger,thunk));
 
 ReactDOM.render(
   <React.StrictMode>
-      <Router>
+    <Provider store={store}>
+    <Router>
         <div>
-          <Route exact path='/' component={App} />
+          <Route exact path='/' component={Main} />
+          <Route path='/user' component={User} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
         </div>
       </Router>
+    </Provider>
     </React.StrictMode>,
   document.getElementById('root')
 );

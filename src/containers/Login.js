@@ -1,5 +1,6 @@
 import React from 'react';
-import axios from 'axios';
+import {connect} from 'react-redux';
+import * as actions from '../actions/userActions';
 
 class Login extends React.Component {
 
@@ -20,18 +21,7 @@ class Login extends React.Component {
 
   handleSubmit(event){
     const {username, password} = this.state;
-    axios.post("http://localhost:5000/login", {username, password})
-      .then(res => {
-        this.setState({
-          username: "",
-          password: ""
-        })
-        console.log(res);
-        if(res.data ==="success"){
-          console.log("redirect");
-          this.props.history.push('/')
-        }
-      })
+    this.props.userIn("http://localhost:5000/login", {username, password}, this.props.history)
     event.preventDefault();    
   }
 
@@ -50,4 +40,19 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+  // console.log(state.user.islogged);
+  // console.log(state.user.username);
+  return{
+    username: state.user.username,
+    islogged: state.user.islogged
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+    userIn : (url, body, history) => dispatch(actions.userIn(url, body, history))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
