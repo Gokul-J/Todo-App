@@ -5,9 +5,30 @@ import * as actions from '../actions/actions';
 
 class App extends React.Component {
 
-  // handleSubmit(props){
-  //   this.props.postRequest("http://localhost:5000", this.props.inputfield)
-  // }
+  constructor(props){
+    super(props);
+    this.state = {
+      inputfield: ""
+    }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event){
+    this.setState({inputfield: event.target.value})
+  }
+
+  handleSubmit(event){
+    this.props.postRequest("http://localhost:5000/", {text:this.state.inputfield})
+    this.setState({inputfield: ""})
+    event.preventDefault();
+  }
+
+  handleDelete(id, event){
+    this.props.deleteRequest("http://localhost:5000/", {data : {id:id}})
+    event.preventDefault();
+  }
 
   componentDidMount(){
     this.props.getRequest("http://localhost:5000/");
@@ -15,7 +36,7 @@ class App extends React.Component {
 
   render(){
 
-    const {list, onInputChange, inputfield, postRequest} = this.props;
+    const {list} = this.props;
 
     return (
       <div>
@@ -27,8 +48,8 @@ class App extends React.Component {
           <a href="/logout">Logout</a>
         </span>
         
-        <form onSubmit={postRequest} >
-          <input type="text" placeholder="Add New ToDo" onChange={onInputChange} />
+        <form onSubmit={this.handleSubmit} >
+          <input type="text" placeholder="Add New ToDo" value={this.state.inputfield} onChange={this.handleChange} />
           <button>Add</button>
         </form>
 
@@ -41,7 +62,7 @@ class App extends React.Component {
                 {/* <button onClick={this.handleEdit.bind(this, todo._id)}>
                         Edit
                       </button> */}
-                {/* <a href="/" onClick={this.handleDelete.bind(this, todo._id)}> X </a> */}
+                <a href="/" onClick={this.handleDelete.bind(this, todo._id)}> X </a>
               </li>)
           })}
         </ol>
@@ -52,21 +73,18 @@ class App extends React.Component {
 
 
 const mapStateToProps = (state) => {
-  // console.log(state.todo);
-  const body = state.todo;
-  console.log(body);
   return{
-    list: state.index.data,
-    inputfield: state.todo.inputField
+    list: state.data,
+    success: state.showSuccessModal
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
 
   return{
-    onInputChange: (event) => dispatch(actions.setTodoInput(event.target.value)),
     getRequest: (url) => dispatch(actions.getData(url)),
-    postRequest: (url, body) => dispatch(actions.postData(url,body))
+    postRequest: (url, body) => dispatch(actions.postData(url,body)),
+    deleteRequest: (url, body) => dispatch(actions.deleteData(url, body))
   }
 }
 

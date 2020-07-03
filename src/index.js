@@ -10,13 +10,11 @@ import Login from './containers/Login';
 import * as serviceWorker from './serviceWorker';
 
 import indexReducer from './reducers/indexReducer';
-import todoReducer from './reducers/todoReducer';
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 
-const rootReducer = combineReducers({index: indexReducer, todo: todoReducer});
-
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(indexReducer, applyMiddleware(logger,thunk));
 
 ReactDOM.render(
   <React.StrictMode>

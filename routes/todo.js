@@ -25,7 +25,7 @@ Router.get("/:id", (req, res) => {
 })
 
 Router.post("/", (req, res) => {
-    // console.log(req);
+    console.log(req.body);
     const text = req.body.text;
     Todo.create({
         text: text

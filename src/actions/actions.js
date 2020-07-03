@@ -1,90 +1,47 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
 
-export const setTodoInput = (text) => {
-    // console.log(text);
-    return{
-        type: actionTypes.CHANGE_TODO_INPUT,
-        data: text
-    }
-}
-
-
 //ROUTE REQUESTS
-const getDataSuccess = (data) => {
-    return {
-        type: actionTypes.GET_DATA_SUCCESS,
-        data: data
-    }
-}
- 
+
 export const getData = (url, props) => {
     
     return (dispatch) => {
         axios.get(url)
         .then(response => {
-            dispatch(getDataSuccess(response.data));
-        })
-        .catch(error => {
-            //TODO: handle the error when implemented
+            dispatch({
+                type: actionTypes.GET_DATA_SUCCESS,
+                data: response.data
+            });
         })
     }
 }
 
-const postDataSuccess = (response) => {
-    return {
-        type: actionTypes.POST_DATA_SUCCESS,
-        response: response
-    }
-}
- 
-export const postData = (url, obj, props) => {
-    console.log(props);
+
+export const postData = (url, obj, history) => {
     return (dispatch) => {
-        axios.post("http://localhost:5000/", {text:"Brush"})
+        axios.post(url, obj)
         .then(response => {
-            dispatch(postDataSuccess(response));
-        })
-        .catch(error => {
-            //TODO: handle the error when implemented
+            dispatch(getData(url));
         })
     }
 }
 
-const putDataSuccess = (response) => {
-    return {
-        type: actionTypes.PUT_DATA_SUCCESS,
-        response: response
-    }
-}
  
 export const putData = (url, obj, props) => {
     return (dispatch) => {
         axios.put(url, obj)
         .then(response => {
-            dispatch(putDataSuccess(response));
-        })
-        .catch(error => {
-            //TODO: handle the error when implemented
+            dispatch(getData(url));
         })
     }
 }
- 
-const deleteDataSuccess = (response) => {
-    return {
-        type: actionTypes.DELETE_DATA_SUCCESS,
-        response: response
-    }
-}
- 
-export const deleteData = (url, props) => {
+
+
+export const deleteData = (url, obj, props) => {
     return (dispatch) => {
-        axios.delete(url)
+        axios.delete(url, obj)
         .then(response => {
-            dispatch(deleteDataSuccess(response));
-        })
-        .catch(error => {
-            //TODO: handle the error when implemented
+            dispatch(getData(url));
         })
     }
 }
