@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as todoactions from '../actions/todoActions';
 import * as useractions from '../actions/userActions';
+import Navbar from '../components/Navbar'
 
 class User extends React.Component {
 
@@ -45,29 +46,30 @@ class User extends React.Component {
   render(){
 
     const {list, isLogged, username} = this.props;
-    console.log(this.props.isLogged);
+    // console.log(this.props.isLogged);
 
-    let view;
-    if(!isLogged){
-      view = <div>
-          <a href="/signup">SignUp</a>
-          <a href="/login">Login</a>
-      </div>
-    }
-    else{
-      view = <div>
-        <h4>Logged In as {username}</h4>
-        <button onClick={this.handleLogout}>Logout</button>
-        </div>
-    }
+    // let view;
+    // if(!isLogged){
+    //   view = <div>
+    //       <a href="/signup">SignUp</a>
+    //       <a href="/login">Login</a>
+    //   </div>
+    // }
+    // else{
+    //   view = <div>
+    //     <h4>Logged In as {username}</h4>
+    //     <button onClick={this.handleLogout}>Logout</button>
+    //     </div>
+    // }
 
     return (
       <div>
+        <Navbar />
         <h1>ToDo List</h1>
 
-        <span>
+        {/* <span>
           {view}
-        </span>
+        </span> */}
         
         <form onSubmit={this.handleSubmit} >
           <input type="text" placeholder="Add New ToDo" value={this.state.inputfield} onChange={this.handleChange} />

@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../actions/userActions';
+import Navbar from '../components/Navbar'
 
 class Signup extends React.Component {
 
@@ -28,6 +29,7 @@ class Signup extends React.Component {
   render() {
     return (
       <div>
+        <Navbar />
         <h1>SignUp</h1>
 
         <form onSubmit={this.handleSubmit}>
