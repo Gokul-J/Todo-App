@@ -1,0 +1,220 @@
+/* NAVBAR STYLES */
+.navbar{
+    background-color: rgba(110, 107, 107, 0.3);
+}
+.navbar-dark .navbar-brand {
+    font-family: Bungee;
+    font-size: 25px;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    color: white;
+    font-size: 20px;
+}
+navbar-toggler-icon{
+    color: white;
+}
+
+.navbar h6 {
+    margin:0;
+    margin-top: 4px;
+}
+
+.fa-github{
+    font-size: 2em;
+    color: white;
+}
+
+/* BACKGROUNG IMAGES */
+.main-image{
+    background: url("../assets/imgs/jessica-lewis-fJXv46LT7Xk-unsplash.jpg");
+    filter: blur(2px);
+}
+
+.form-image{
+    background: url("../assets/imgs/Desk-Cable-Management-Gadgets-To-Keep-You-Organised.jpg");
+    filter: blur(2px);
+}
+
+body{
+    background: url("../assets/imgs/mat-reding-Dh8WrCMUdy8-unsplash.jpg");
+}
+
+.bg-image{
+    height: 100vh;
+    background-position: top;
+    background-size: cover;
+}
+
+/* MAIN PAGE STYLES */
+.bg-text{
+    color:rgb(255, 255, 255);
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    width: 60%;
+    text-shadow: 2px 0px 4px rgb(77, 74, 74);
+    border: 10px solid #ffffff;
+    background-color: rgba(0,0,0, 0.4);
+}
+
+.head-text{
+    font-family: Bungee;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+/* LOGIN PAGE STYLES */
+.form-content{
+    color:rgb(255, 255, 255);
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    text-shadow: 2px 0px 4px rgb(77, 74, 74);
+    border: 5px solid #ffffff;
+    background-color: rgba(0,0,0, 0.4);
+    padding: 100px 0;
+}
+
+#form-head{
+    font-family: Bangers;
+    font-weight: 500;
+    font-size: 3em;
+    letter-spacing: 2px;
+}
+
+.form-control {
+    width:45%;
+    margin: 20px 25%;
+    border: 0;
+    background: transparent;
+    color:white;
+    outline: none;
+    border-bottom: 2px solid rgb(77, 74, 74);   
+}
+
+.form-control:focus {
+    outline:none;
+    background-color: rgba(0,0,0,.4);
+    color:white;
+}
+
+.form-control::placeholder {
+    color: rgb(235, 228, 228);
+}
+
+/* TODO STYLES */
+.list{
+    padding-top: 100px;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    top: 5%;
+    left: 30%;
+    width:40%;
+}
+
+.head-space{
+    padding-bottom: 20px;
+}
+
+#todo-input{
+    width: 300px;
+    padding-top: 5px;
+    padding-bottom: 7px;
+    padding-left: 7px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    color:rgb(0, 0, 0);
+    outline: none;
+    display: inline-block;
+    /* margin-right: 10px; */
+    margin-top: 3px;
+}
+
+#todo-input::placeholder {
+    color: rgb(19, 18, 18);
+}
+
+.elements{
+    position: absolute;
+    top: 28%;
+    left: 0;
+    width: 100%;
+}
+
+ol{
+    padding:0;
+    margin: 0 auto;
+    margin-top: 100px;
+    width: 25%;
+    word-wrap: break-word;
+    margin-bottom: 50px;
+}
+
+@media only screen and (max-width: 1200px) {
+    ol {
+      width: 45%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    ol {
+      width: 55%;
+    }
+}
+
+li{
+    list-style: none;
+    background-color: rgba(32, 31, 31, 0.9);
+    color: rgb(255, 255, 255);
+    border-bottom: 2px solid rgb(77, 74, 74);   
+    text-align: left;
+    padding: 5px 0;
+    margin: 0;
+    line-height: 40px;
+    font-size: 20px;
+    border-top: 3px solid rgb(255, 255, 255);
+    border-left: 3px solid rgb(255, 255, 255);
+    border-right: 3px solid rgb(255, 255, 255);
+    overflow: hidden;
+}
+
+li:last-child{
+    border-bottom: 3px solid rgb(255, 255, 255);
+}
+
+input[type="checkbox"]{
+    -webkit-appearance: none;
+	border: 2px solid #ffffff;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+	padding: 9px;
+	border-radius: 3px;
+	display: inline-block;
+	position: relative;
+}
+
+.checkbox{
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+input[type="checkbox"]:checked + .checkbox {
+    text-decoration: line-through;
+}
+
+input[type="checkbox"]:checked:after {
+    content: '\2714';
+	position: absolute;
+	top: -13px;
+    left: 2px;
+    /* color: #c8dd0c; */
+    color: #07ffac;
+}
+
+.fa-trash-alt{
+    float: right;
+    margin-right: 10px;
+    margin-top: 12px;
+}

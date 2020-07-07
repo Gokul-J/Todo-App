@@ -22,7 +22,7 @@ class Login extends React.Component {
 
   handleSubmit(event){
     const {username, password} = this.state;
-    this.props.userIn("http://localhost:5000/login", {username, password}, this.props.history)
+    this.props.userIn("http://localhost:5000/login", {username, password}, this.props.history);
     event.preventDefault();    
   }
 
@@ -30,24 +30,34 @@ class Login extends React.Component {
     return (
       <div>
         <Navbar />
-        <h1>Login</h1>
+        <div id="login" className="login-content text-center" >
+          <div className="form-image bg-image"></div>
+          <div className="form-content">
+            <h1 id="form-head">Login</h1>
 
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="username" name="username" value={this.state.username} onChange={this.handleChange} />
-          <input type="password" placeholder="password" name="password" value={this.state.password} onChange={this.handleChange} />
-          <input type="submit" />
-        </form>
+            <form onSubmit={this.handleSubmit}>
+              <div className="form-group">
+                {/* <label for="username">Username</label> */}
+                <input id="username" className="form-control" type="text" placeholder="Username" name="username" value={this.state.username} onChange={this.handleChange} required/>
+              </div>
+              <div className="form-group">
+                {/* <label for="password">Password</label> */}
+                <input id="password" className="form-control" type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} required/>
+              </div>
+              <input className="btn btn-success btn-lg m-3 px-5" type="submit" />
+            </form>
+          </div>
+        </div>
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state.user.islogged);
-  // console.log(state.user.username);
   return{
     username: state.user.username,
-    islogged: state.user.islogged
+    islogged: state.user.islogged,
+    id: state.user.id,
   }
 }
 

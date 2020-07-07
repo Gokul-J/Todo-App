@@ -31,18 +31,19 @@ Router.post("/signup", (req,res) => {
 })
 
 Router.post("/login",(req,res) => {
-    // console.log(req.user);
     Passport.authenticate("local")(req,res,() => {
         console.log("Logged In as", req.body.username);
         User.findOne({username: req.body.username}, (err, foundUser) => {
             if(err){
                 console.log(err);
+                console.log("Failure");
             }
             else{
                 data ={
                     username: req.body.username,
                     id: foundUser._id
                 }
+                console.log(data);
                 res.send(data);
             }
         })

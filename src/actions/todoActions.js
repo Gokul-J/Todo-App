@@ -28,17 +28,17 @@ export const postData = (url, obj, history) => {
 }
 
  
-export const putData = (url, obj, props) => {
-    return (dispatch) => {
-        axios.put(url, obj)
-        .then(response => {
-            dispatch(getData(url));
-        })
-    }
-}
+// export const putData = (url, obj, props) => {
+//     return (dispatch) => {
+//         axios.put(url, obj)
+//         .then(response => {
+//             dispatch(getData(url));
+//         })
+//     }
+// }
 
 
-export const deleteData = (url, obj, props) => {
+export const deleteData = (url, obj, history) => {
     return (dispatch) => {
         axios.delete(url, obj)
         .then(response => {

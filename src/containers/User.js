@@ -2,7 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as todoactions from '../actions/todoActions';
 import * as useractions from '../actions/userActions';
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar';
+import './App.css';
 
 class User extends React.Component {
 
@@ -28,7 +29,7 @@ class User extends React.Component {
   }
 
   handleDelete(id, event){
-    this.props.deleteRequest("http://localhost:5000/", {data : {id:id}, username: this.props.username})
+    this.props.deleteRequest("http://localhost:5000/", {data : {id:id}, username: this.props.username}, this.props.history)
     event.preventDefault();
   }
 
@@ -45,50 +46,40 @@ class User extends React.Component {
 
   render(){
 
-    const {list, isLogged, username} = this.props;
-    // console.log(this.props.isLogged);
+    const {list, islogged} = this.props;
 
-    // let view;
-    // if(!isLogged){
-    //   view = <div>
-    //       <a href="/signup">SignUp</a>
-    //       <a href="/login">Login</a>
-    //   </div>
-    // }
-    // else{
-    //   view = <div>
-    //     <h4>Logged In as {username}</h4>
-    //     <button onClick={this.handleLogout}>Logout</button>
-    //     </div>
-    // }
+    if(!islogged){
+      this.props.history.push("/");
+    }
 
     return (
       <div>
         <Navbar />
-        <h1>ToDo List</h1>
-
-        {/* <span>
-          {view}
-        </span> */}
+        <div>
+        <div className="user-image bg-image"></div>
+        <div className="list text-center">
+        <h1 className="head-text head-space">ToDo List</h1>
         
         <form onSubmit={this.handleSubmit} >
-          <input type="text" placeholder="Add New ToDo" value={this.state.inputfield} onChange={this.handleChange} />
-          <button>Add</button>
+          <input id="todo-input" type="text" placeholder="Add New ToDo" value={this.state.inputfield} onChange={this.handleChange} />
+          <button className="btn btn-success btn-md">Add</button>
         </form>
 
-        
+        </div>
+        <div className="elements" >
         <ol>
           {list.map(todo => {
             return (
               <li key={todo._id} >
-                <input type="checkbox" /><span className="checkbox">{todo.text}</span>
-                {/* <button onClick={this.handleEdit.bind(this, todo._id)}>
-                        Edit
-                      </button> */}
-                <a href="/" onClick={this.handleDelete.bind(this, todo._id)}> X </a>
+                <input className="mx-3" type="checkbox" />
+                <span className="checkbox">{todo.text}</span>
+                <i class="fas fa-trash-alt text-right" onClick={this.handleDelete.bind(this, todo._id)}></i>
               </li>)
           })}
         </ol>
+        </div>
+        
+        </div>
       </div>
     );
   }
@@ -100,9 +91,9 @@ const mapStateToProps = (state) => {
   return{
     list: state.todo.data,
     success: state.todo.showSuccessModal,
-    isLogged: state.user.islogged,
     username: state.user.username,
-    id: state.user.id
+    id: state.user.id,
+    islogged: state.user.islogged
   }
 }
 

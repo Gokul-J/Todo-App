@@ -2,7 +2,7 @@ import * as actionTypes from './actionTypes';
 import axios from 'axios';
 
 export const userIn = (url, obj, history) => {
-
+    console.log(obj);
     return (dispatch) => {
         axios.post(url, obj)
         .then(response => {

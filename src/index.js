@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Redirect, Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import './index.css';
 import Main from './containers/Main'
 import User from './containers/User';
 import Signup from './containers/Signup';
 import Login from './containers/Login';
-// import store from './redux';
 import * as serviceWorker from './serviceWorker';
 
 import todoReducer from './reducers/todoReducer';
@@ -22,13 +21,18 @@ const store = createStore(rootReducer, applyMiddleware(logger,thunk));
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <Router>
-        <div>
-          <Route exact path='/' component={Main} />
+      <Router>
+        <Switch>
+          <Route exact path='/' component={Main} />          
           <Route path='/user' component={User} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
-        </div>
+          <Route
+            path="*"
+            render={() => 
+              <Redirect to="/" />
+            } />
+        </Switch>
       </Router>
     </Provider>
     </React.StrictMode>,
