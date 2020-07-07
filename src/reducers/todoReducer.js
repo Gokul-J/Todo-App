@@ -5,7 +5,7 @@ const initialState = {
     showSuccessModal: false
 }
 
-const indexReducer = (state = initialState, action) => {
+const todoReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.GET_DATA_SUCCESS:
             return {
@@ -32,4 +32,4 @@ const indexReducer = (state = initialState, action) => {
     }
 }
 
-export default indexReducer;
+export default todoReducer;

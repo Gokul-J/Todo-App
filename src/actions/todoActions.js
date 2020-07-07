@@ -7,7 +7,7 @@ export const getData = (url, obj, props) => {
     
     return (dispatch) => {
         console.log(obj);
-        axios.get("http://localhost:5000/" + obj)
+        axios.get(url + obj)
         .then(response => {
             dispatch({
                 type: actionTypes.GET_DATA_SUCCESS,
