@@ -2,15 +2,24 @@ import * as actionTypes from './actionTypes';
 import axios from 'axios';
 
 export const userIn = (url, obj, history) => {
-    console.log(obj);
+    // console.log(obj);
     return (dispatch) => {
         axios.post(url, obj)
         .then(response => {
-            dispatch({
-                type: actionTypes.SET_LOGIN,
-                data: response.data
-            })
-            history.push("/user");
+            // console.log(response);
+            if(response.data.username){
+                dispatch({
+                    type: actionTypes.SET_LOGIN,
+                    data: response.data
+                })
+                history.push("/user");
+            }
+            else{
+                dispatch({
+                    type: actionTypes.FLASH_MESSAGE,
+                    data: response.data
+                })
+            }
         })
     }
 }
@@ -27,6 +36,15 @@ export const userOut = (url) => {
                 type: actionTypes.GET_DATA_SUCCESS,
                 data: []
             })
+        })
+    }
+}
+
+export const resetFlash = () => {
+    return (dispatch) => {
+        dispatch({
+            type: actionTypes.RESET_FLASH,
+            data: ""
         })
     }
 }

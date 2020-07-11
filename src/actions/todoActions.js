@@ -6,7 +6,7 @@ import axios from 'axios';
 export const getData = (url, obj, props) => {
     
     return (dispatch) => {
-        console.log(obj);
+        // console.log(obj);
         axios.get(url + obj)
         .then(response => {
             dispatch({

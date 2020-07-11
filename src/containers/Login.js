@@ -27,12 +27,22 @@ class Login extends React.Component {
   }
 
   render() {
+    const {flashMessage, flash} = this.props;
+    let view;
+
+    if(flash){
+      view = <p className="flash bg-danger">{flashMessage}</p>
+      setTimeout(() => {
+        this.props.resetFlash();
+      }, 1000);
+    }
     return (
       <div>
         <Navbar />
         <div id="login" className="login-content text-center" >
           <div className="form-image bg-image"></div>
           <div className="form-content">
+            {view}
             <h1 id="form-head">Login</h1>
 
             <form onSubmit={this.handleSubmit}>
@@ -58,12 +68,15 @@ const mapStateToProps = (state) => {
     username: state.user.username,
     islogged: state.user.islogged,
     id: state.user.id,
+    flashMessage: state.user.flashMessage,
+    flash: state.user.flash
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return{
-    userIn : (url, body, history) => dispatch(actions.userIn(url, body, history))
+    userIn : (url, body, history) => dispatch(actions.userIn(url, body, history)),
+    resetFlash: () => dispatch(actions.resetFlash())
   }
 }
 

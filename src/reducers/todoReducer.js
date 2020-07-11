@@ -17,11 +17,6 @@ const todoReducer = (state = initialState, action) => {
                 ...state,
                 showSuccessModal: true
             };
-        case actionTypes.PUT_DATA_SUCCESS:
-            return {
-                ...state,
-                showSuccessModal: true
-            }
         case actionTypes.DELETE_DATA_SUCCESS:
             return {
                 ...state,
