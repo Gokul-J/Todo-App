@@ -23,7 +23,8 @@ ReactDOM.render(
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route exact path='/' component={Main} />          
+          <Route exact path='/' component={test} />          
+          <Route path='/main' component={Main} />          
           <Route path='/user' component={User} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
