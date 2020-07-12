@@ -7,7 +7,8 @@ const express = require("express"),
   mongoose = require("mongoose"),
   todoRoutes = require("./routes/todo"),
   indexRoutes = require("./routes/index"),
-  User = require("./models/user");
+  User = require("./models/user"),
+  path = require('path');
 
 //MONGOOSE CONFIG
 // mongoose.connect("mongodb://localhost/todo_app", { useNewUrlParser: true, useUnifiedTopology: true });
