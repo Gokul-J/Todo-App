@@ -42,9 +42,9 @@ passport.deserializeUser(User.deserializeUser());
 app.use("/api/todo",todoRoutes);
 app.use("/api/user",indexRoutes);
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
+// });
 
 //LOGIN USER
 app.use((req,res,user) => {
