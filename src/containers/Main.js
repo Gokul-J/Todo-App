@@ -1,13 +1,8 @@
 import React from 'react';
 import './App.css';
 import Navbar from '../components/Navbar'
-import Axios from 'axios';
 
 class Main extends React.Component {
-  componentDidMount(){
-    Axios.get("http:localhost:5000/")
-      .then(res => console.log(res))
-  }
   render() {
 
     return (

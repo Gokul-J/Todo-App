@@ -43,8 +43,8 @@ app.get('*', (req, res) => {
 })
 
 //ROUTES CONFIG
-app.use(todoRoutes);
-app.use(indexRoutes);
+app.use("/api/todo",todoRoutes);
+app.use("/api/user",indexRoutes);
 
 //LOGIN USER
 app.use((req,res,user) => {
