@@ -26,6 +26,10 @@ Router.get("/:id", (req, res) => {
     })
 })
 
+Router.get("/", (req,res) => {
+    res.send("Success");
+})
+
 Router.post("/", (req, res) => {
     // console.log(req.body);
     const text = req.body.text;
