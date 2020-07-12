@@ -24,6 +24,7 @@ mongoose.connect(connection,{ useNewUrlParser: true, useUnifiedTopology: true, u
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ "extended": "false" }));
+app.use('/', express.static(path.join(__dirname, './build')));
 
 //PASSPORT CONFIG
 app.use(require("express-session")({
@@ -37,14 +38,13 @@ passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use(express.static('/build'))
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './build'))
-})
-
 //ROUTES CONFIG
 app.use("/api/todo",todoRoutes);
 app.use("/api/user",indexRoutes);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
+});
 
 //LOGIN USER
 app.use((req,res,user) => {
