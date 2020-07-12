@@ -27,11 +27,11 @@ ReactDOM.render(
           <Route path='/user' component={User} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
-          <Route
+          {/* <Route
             path="*"
             render={() => 
               <Redirect to="/" />
-            } />
+            } /> */}
         </Switch>
       </Router>
     </Provider>
