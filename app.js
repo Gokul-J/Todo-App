@@ -51,6 +51,7 @@ app.use((req,res,user) => {
 })
 
 //SERVER LISTEN PORT
-app.listen(5000, () => {
-  console.log("Server is Live on 5000");
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+  console.log("Server is Live on ${port}");
 })
