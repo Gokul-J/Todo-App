@@ -24,19 +24,19 @@ class User extends React.Component {
 
   handleSubmit(event) {
     if (this.state.inputfield !== "") {
-      this.props.postRequest("http://localhost:5000/", { text: this.state.inputfield, username: this.props.username })
+      this.props.postRequest("/api/todo/", { text: this.state.inputfield, username: this.props.username })
       this.setState({ inputfield: "" })
     }
     event.preventDefault();
   }
 
   handleDelete(id, event) {
-    this.props.deleteRequest("http://localhost:5000/", { data: { id: id }, username: this.props.username }, this.props.history)
+    this.props.deleteRequest("/api/todo/", { data: { id: id }, username: this.props.username }, this.props.history)
     event.preventDefault();
   }
 
   componentDidMount() {
-    this.props.getRequest("http://localhost:5000/", this.props.username);
+    this.props.getRequest("/api/todo/", this.props.username);
   }
 
   render() {

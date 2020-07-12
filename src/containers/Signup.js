@@ -22,7 +22,7 @@ class Signup extends React.Component {
 
   handleSubmit(event){
     const {username, password} = this.state;
-    this.props.userReq("http://localhost:5000/signup", {username, password}, this.props.history);
+    this.props.userReq("/api/user/signup", {username, password}, this.props.history);
     event.preventDefault();
   }
 

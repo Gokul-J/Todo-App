@@ -22,7 +22,7 @@ class Login extends React.Component {
 
   handleSubmit(event){
     const {username, password} = this.state;
-    this.props.userIn("http://localhost:5000/login", {username, password}, this.props.history);
+    this.props.userIn("/api/user/login", {username, password}, this.props.history);
     event.preventDefault();    
   }
 
