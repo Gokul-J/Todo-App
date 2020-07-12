@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Redirect, Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import './index.css';
+import Test from './containers/Test'
 import Main from './containers/Main'
 import User from './containers/User';
 import Signup from './containers/Signup';
@@ -23,7 +24,7 @@ ReactDOM.render(
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route exact path='/' component={test} />          
+          <Route exact path='/' component={Test} />          
           <Route path='/main' component={Main} />          
           <Route path='/user' component={User} />
           <Route path="/signup" component={Signup} />

@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Navbar from '../components/Navbar'
 
-class Main extends React.Component {
+class Test extends React.Component {
   render() {
 
     return (
@@ -13,4 +13,4 @@ class Main extends React.Component {
   }
 }
 
-export default Main;
+export default Test;
