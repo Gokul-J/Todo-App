@@ -22,7 +22,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <Router>
-        <Switch>
+        {/* <Switch>
           <Route exact path='/' component={test} />          
           <Route path='/main' component={Main} />          
           <Route path='/user' component={User} />
@@ -33,7 +33,8 @@ ReactDOM.render(
             render={() => 
               <Redirect to="/" />
             } />
-        </Switch>
+        </Switch> */}
+        <Main/>
       </Router>
     </Provider>
     </React.StrictMode>,
