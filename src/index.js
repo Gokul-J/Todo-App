@@ -15,7 +15,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
-const rootReducer = combineReducers({todo: todoReducer, user: userReducer})
+const rootReducer = combineReducers({todo: todoReducer, user: userReducer});
 const store = createStore(rootReducer, applyMiddleware(logger,thunk));
 
 ReactDOM.render(
@@ -27,11 +27,11 @@ ReactDOM.render(
           <Route path='/user' component={User} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
-          {/* <Route
+          <Route
             path="*"
             render={() => 
               <Redirect to="/" />
-            } /> */}
+            } />
         </Switch>
       </Router>
     </Provider>

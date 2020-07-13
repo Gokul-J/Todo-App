@@ -56,9 +56,10 @@ class User extends React.Component {
     return (
       <div>
         <Navbar />
-        <div>
+        
           <div className="user-image bg-image"></div>
-          <div className="list text-center">
+          <div className="position text-center">
+          <div className="list">
             {view}
 
             <h1 className="head-text head-space">ToDo List</h1>
