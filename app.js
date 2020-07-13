@@ -39,12 +39,14 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //ROUTES CONFIG
-app.use("/api/todo",todoRoutes);
-app.use("/api/user",indexRoutes);
-
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/build', 'index.html'));
 });
+
+app.use("/api/todo",todoRoutes);
+app.use("/api/user",indexRoutes);
+
+
 
 //LOGIN USER
 app.use((req,res,user) => {
