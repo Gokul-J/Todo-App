@@ -267,7 +267,7 @@ input[type="checkbox"]:checked:after {
         width: 70%;
     } 
     ol {
-        width: 90%;
+        width: 100%;
     }
     .fas{
         font-size: 17px;
@@ -280,6 +280,9 @@ input[type="checkbox"]:checked:after {
     }
     .head-text{
         font-size: 35px;
+    }
+    .welcome-text{
+        font-size: 30px;
     }
     h4{
         font-size: 18px;
