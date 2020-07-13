@@ -11,13 +11,11 @@ const express = require("express"),
   path = require('path');
 
 //MONGOOSE CONFIG
-// mongoose.connect("mongodb://localhost/todo_app", { useNewUrlParser: true, useUnifiedTopology: true });
-// mongoose.connect("mongodb+srv://Gokul-J:<password>@todo-app.o8wqz.mongodb.net/<dbname>?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
-// const mongoose = require('mongoose');
-const connection = "mongodb+srv://Gokul-J:jothi@2009@todo-app.o8wqz.mongodb.net/<dbname>?retryWrites=true&w=majority";
-mongoose.connect(connection,{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
-    .then(() => console.log("Database Connected Successfully"))
-    .catch(err => console.log("Catch"+err));
+mongoose.connect("mongodb://localhost/todo_app", { useNewUrlParser: true, useUnifiedTopology: true });
+// const connection = "mongodb+srv://Gokul-J:jothi@2009@todo-app.o8wqz.mongodb.net/<dbname>?retryWrites=true&w=majority";
+// mongoose.connect(connection,{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
+//     .then(() => console.log("Database Connected Successfully"))
+//     .catch(err => console.log("Catch"+err));
 
 
 //APP CONFIG
