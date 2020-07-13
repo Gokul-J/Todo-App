@@ -41,11 +41,15 @@ class User extends React.Component {
 
   render() {
 
-    const { list, islogged, flash, flashMessage} = this.props;
-    let view;
+    const { list, islogged, flash, flashMessage, username} = this.props;
+    let view,welcome;
 
     if (!islogged) {
       this.props.history.push("/");
+
+    }
+    else{
+      welcome = <p className="welcome-text">Welcome {username}</p>
     }
     if(flash){
       view = <p className="flash bg-success">{flashMessage}</p>
@@ -61,8 +65,9 @@ class User extends React.Component {
           <div className="position text-center">
           <div className="list">
             {view}
+            {welcome}
 
-            <h1 className="head-text head-space">ToDo List</h1>
+            {/* <h1 className="head-text head-space">ToDo List</h1> */}
 
             <form onSubmit={this.handleSubmit} >
               <input id="todo-input" type="text" placeholder="Add New ToDo" value={this.state.inputfield} onChange={this.handleChange} />
