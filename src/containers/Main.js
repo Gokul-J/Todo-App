@@ -11,7 +11,7 @@ class Main extends React.Component {
         <div className="bg-text text-center">
           <Navbar />
           <div className="my-5">
-            <h1 className="head-text">TODO LIST</h1>
+            <h1 className="head-text">TODO LISTS</h1>
             <h4> One Place for All your Tasks</h4>
           </div>
           <nav className="navbar navbar-expand-lg navbar-light fixed-bottom">
