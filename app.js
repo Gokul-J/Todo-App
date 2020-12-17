@@ -1,6 +1,5 @@
 const express = require("express"),
   app = express(),
-  Router = express.Router(),
   bodyParser = require("body-parser"),
   cors = require("cors"),
   passport = require("passport"),
@@ -33,15 +32,12 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //ROUTES CONFIG
-Router.get("/", (req,res) => {
-  res.send("Hello");
-})
 app.use("/api/todo",todoRoutes);
 app.use("/api/user",indexRoutes);
 
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '/build', 'index.html'));
-// });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/build', 'index.html'));
+});
 
 //LOGIN USER
 app.use((req,res,user) => {
