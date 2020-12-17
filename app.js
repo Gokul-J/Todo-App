@@ -11,7 +11,7 @@ const express = require("express"),
   path = require('path');
 
 //MONGOOSE CONFIG
-mongoose.connect("mongodb://localhost/todo_app", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://Gokul-J:jothi@2009@todo-app.q9gzc.mongodb.net/<dbname>?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 
 //APP CONFIG
 app.use(cors());
