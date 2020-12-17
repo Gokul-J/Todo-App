@@ -1,5 +1,6 @@
 const express = require("express"),
   app = express(),
+  Router = express.Router(),
   bodyParser = require("body-parser"),
   cors = require("cors"),
   passport = require("passport"),
@@ -11,7 +12,7 @@ const express = require("express"),
   path = require('path');
 
 //MONGOOSE CONFIG
-mongoose.connect("mongodb+srv://Gokul-J:jothi@2009@todo-app.q9gzc.mongodb.net/<dbname>?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://Gokul-J:jothi@2009@todo-app.o8wqz.mongodb.net/<dbname>?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 
 //APP CONFIG
 app.use(cors());
@@ -32,12 +33,15 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //ROUTES CONFIG
+Router.get("/", (req,res) => {
+  res.send("Hello");
+})
 app.use("/api/todo",todoRoutes);
 app.use("/api/user",indexRoutes);
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/build', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '/build', 'index.html'));
+// });
 
 //LOGIN USER
 app.use((req,res,user) => {
